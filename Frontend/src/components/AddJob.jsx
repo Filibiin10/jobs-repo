@@ -32,13 +32,14 @@ const AddJob = ({ isOpen, onClose }) => {
     return true;
   };
 
+  axios.defaults.withCredentials = true;
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return; // Validate the form before submitting
 
     try {
-      const response = await axios.post('http://localhost:8000/api/jobs', jobData);
+      const response = await axios.post('https://jobs-repo.vercel.app/api/jobs', jobData);
       console.log(response.status)
 
       if (response.status === 200) {
