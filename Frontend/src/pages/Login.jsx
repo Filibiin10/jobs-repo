@@ -20,7 +20,7 @@ const Login = () => {
         return; // Prevent submission if fields are empty
       }
 
-      const response = await axios.post('http://localhost:8000/api/users/login', {
+      const response = await axios.post('https://jobs-repo.vercel.app/api/users/login', {
         email,
         password,
       });
