@@ -24,15 +24,15 @@ ConnectDB();
 // Middleware
 
 app.use(cors({
-    origin: ["https://jobs-repo-frontend.vercel.app"], 
-    methods: [
-      'GET',
-      'POST',
-      'PUT',
-      'DELETE'
-    ],
-    credentials: true
-  }));
+  origin: ["https://jobs-repo-frontend.vercel.app"],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // Add any required headers here
+  credentials: true
+}));
+
+// Optional: Handle OPTIONS requests for preflight
+app.options('*', cors());
+
 app.use(express.json({ extended: true }));
 app.use(cookieParser());
 
