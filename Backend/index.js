@@ -24,7 +24,7 @@ ConnectDB();
 // Middleware
 
 app.use(cors({
-    origin: ["https://jobs-repo-frontend.vercel.app/"], 
+    origin: ["https://jobs-repo-frontend.vercel.app"], 
     methods: [
       'GET',
       'POST',
