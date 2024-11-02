@@ -9,10 +9,10 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/$1", // Corrected to redirect to the matching route
-      "methods": ["GET", "POST", "PUT", "DELETE"], // Specify methods for the route
+      "dest": "/$1", 
+      "methods": ["GET", "POST", "PUT", "DELETE"], 
       "headers": {
-        "Access-Control-Allow-Origin": "https://your-frontend-domain.com", // Set to your frontend URL
+        "Access-Control-Allow-Origin": "https://your-frontend-domain.com",
         "Access-Control-Allow-Credentials": "true"
       }
     }
