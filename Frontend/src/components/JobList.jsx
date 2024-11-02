@@ -2,21 +2,26 @@ import React, { useEffect } from 'react';
 import SingleJob from './SingleJob';
 import Category from './Category';
 import useJob from '../JopContext';
+import axios from "axios"
 
 const JobList = () => {
   const { jobs, setJobs, selectedCategories } = useJob(); // Updated to use selectedCategories
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/api/jobs');
-        const data = await response.json();
-        setJobs(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchJobs();
-  }, [setJobs]);
+
+axios.defaults.withCredentials = true;
+
+useEffect(() => {
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.get('https://jobs-repo.vercel.app/api/jobs');
+      const data = response.data;
+      setJobs(data);
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    }
+  };
+  fetchJobs();
+}, []);
+
 
   // Filter jobs based on selected categories
   const filteredJobs = selectedCategories.length === 0 
