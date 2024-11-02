@@ -57,16 +57,16 @@ const loginUser = asynchandler(async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV !== "development",
-      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production", // Set to true only in production
+      sameSite: "None", // Change from "strict" to "None"
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     });
 
-    res .status(200) .json({
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-      });
+    res.status(200).json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+    });
   } else {
     res.status(401).json({ message: "Invalid email or password" });
   }
