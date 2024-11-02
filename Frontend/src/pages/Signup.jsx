@@ -34,7 +34,7 @@ const Signup = () => {
     
     try {
       // Check if the username or email is already taken
-      const checkUserResponse = await axios.post('https://jobs-repo.vercel.app/api/users/check', {
+      const checkUserResponse = await axios.post('https://jobs-repo.vercel.app/api/users/create', {
         username,
         email,
       });
